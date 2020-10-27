@@ -10,6 +10,7 @@ import Contact from './ContactComponent';
 import { COMMENTS } from '../shared/comments';
 import { PARTNERS } from '../shared/partners';
 import { PROMOTIONS } from '../shared/promotions';
+import About from './AboutComponent';
 
 class Main extends Component {
     constructor(props) {
@@ -22,9 +23,6 @@ class Main extends Component {
         };
     }
 
-    // onCampsiteSelect(campsiteId) {
-    //     this.setState({selectedCampsite: campsiteId});
-    // }
 
     render() {
         const HomePage = () => {
@@ -53,11 +51,10 @@ class Main extends Component {
                 <Route path='/home' component={HomePage} />
                     <Route exact path='/directory' render={() => <Directory campsites={this.state.campsites} />} />
                     <Route exact path='/contactus' component={Contact} />
+                    <Route exact path='/aboutus' render={() => <About partners={this.state.partners} />} />
                     <Route path='/directory/:campsiteId' component={CampsiteWithId} />
                     <Redirect to='/home' />
                 </Switch>
-                {/* <Directory campsites={this.state.campsites} onClick={campsiteId => this.onCampsiteSelect(campsiteId)} />
-                <CampsiteInfo campsite={this.state.campsites.filter(campsite => campsite.id === this.state.selectedCampsite)[0]} /> */}
                 
                 <Footer />
             </div>
